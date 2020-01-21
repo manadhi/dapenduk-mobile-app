@@ -1,5 +1,19 @@
 <resources>
     <string name="app_name">Dapenduk</string>
+    <string name="search_title">Search</string>
+    <string name="search_hint">Search here ...</string>
+    <string name="full_name">Nama Lengkap</string>
+    <string name="gender">Jenis Kelamin</string>
+    <string name="address">Alamat</string>
+    <string name="birth_place">Tempat Lahir</string>
+    <string name="birth_date">Tanggal Lahir</string>
+    <string name="profession">Pekerjaan</string>
+    <string name="save_success">Data berhasil disimpan</string>
+    <string name="save_fail">Data gagal disimpan</string>
+    <string name="get_data_fail">Maaf, gagal mengambil data</string>
+    <string name="no_data">Maaf, tidak ada data yang tersimpan</string>
+
+    <!--    login ui-->
     <string name="title_activity_login">Sign in</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
