@@ -7,6 +7,10 @@ public interface BaseContract {
         void showInfo(boolean state);
     }
 
+    interface BasePresenter {
+        void getOnePersonData(Long id);
+    }
+
     interface BaseInteractor {
         interface Listener<T> {
             void onSuccess(T data);

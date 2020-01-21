@@ -8,8 +8,7 @@ public interface DetailContract {
         void showDetailPerson(Person person);
     }
 
-    interface Presenter {
-        void getPersonData(Long id);
+    interface Presenter extends BaseContract.BasePresenter {
     }
 
     interface Interactor extends BaseContract.BaseInteractor {
