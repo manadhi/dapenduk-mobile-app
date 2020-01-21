@@ -29,4 +29,9 @@ public class DetailActivity extends AppCompatActivity implements DetailContract.
     public void showInfo(boolean state, String message) {
 
     }
+
+    @Override
+    public void initializeDaoSession() {
+
+    }
 }

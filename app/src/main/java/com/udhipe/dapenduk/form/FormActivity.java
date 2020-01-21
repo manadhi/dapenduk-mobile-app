@@ -10,7 +10,9 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.udhipe.dapenduk.R;
+import com.udhipe.dapenduk.model.DaoSession;
 import com.udhipe.dapenduk.model.Person;
+import com.udhipe.dapenduk.util.App;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -31,6 +33,8 @@ public class FormActivity extends AppCompatActivity implements FormContract.View
 
     private SimpleDateFormat mDateFormatter = new SimpleDateFormat("yyyy-MM-dd");
 
+    private DaoSession mDaoSession;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +54,7 @@ public class FormActivity extends AppCompatActivity implements FormContract.View
         mLayoutEditForm = findViewById(R.id.layout_edit_form);
 
         mPresenter = new FormPresenter(this);
+        mPresenter.getDaoSession();
 
         mBtnSaveData.setOnClickListener(this);
     }
@@ -98,6 +103,12 @@ public class FormActivity extends AppCompatActivity implements FormContract.View
         } else {
             Snackbar.make(mLayoutEditForm, getString(R.string.save_fail), Snackbar.LENGTH_LONG);
         }
+    }
+
+    @Override
+    public void initializeDaoSession() {
+        mDaoSession = ((App) getApplication()).getDaoSession();
+        mPresenter.setDaoSession(mDaoSession);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.udhipe.dapenduk.form;
 
+import com.udhipe.dapenduk.model.DaoSession;
 import com.udhipe.dapenduk.model.Person;
 
 import java.util.ArrayList;
@@ -9,6 +10,7 @@ public class FormPresenter implements FormContract.Presenter {
 
     private FormContract.Interactor mInteractor;
     private FormContract.View mView;
+    private DaoSession mDaosession;
 
     public FormPresenter(FormContract.View mView) {
         this.mView = mView;
@@ -40,9 +42,10 @@ public class FormPresenter implements FormContract.Presenter {
                                Date birthDate, String profession) {
         Long id = null;
         Person person = new Person(id, name, address, birthPlace, birthDate, gender, "", profession);
-        mInteractor.saveData(person, new FormInteractor.Listener<ArrayList<Person>>() {
+
+        mInteractor.saveData(mDaosession, person, new FormInteractor.Listener<ArrayList<Person>>() {
             @Override
-            public void onSuccess(ArrayList<Person> data) {
+            public void onSuccess(ArrayList<Person> data, String message) {
                 mView.setPersonData(data);
                 mView.showInfo(true, "");
             }
@@ -67,6 +70,16 @@ public class FormPresenter implements FormContract.Presenter {
     @Override
     public void exceptionHandler(String message) {
 
+    }
+
+    @Override
+    public void getDaoSession() {
+        mView.initializeDaoSession();
+    }
+
+    @Override
+    public void setDaoSession(DaoSession mDaoSession) {
+        this.mDaosession = mDaoSession;
     }
 
 }

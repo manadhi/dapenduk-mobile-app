@@ -1,6 +1,7 @@
 package com.udhipe.dapenduk.form;
 
 import com.udhipe.dapenduk.BaseContract;
+import com.udhipe.dapenduk.model.DaoSession;
 import com.udhipe.dapenduk.model.Person;
 
 import java.util.ArrayList;
@@ -32,10 +33,11 @@ public interface FormContract {
     }
 
     interface Interactor extends BaseContract.BaseInteractor {
+
         void loadOneData(Long id, Listener<Person> listener);
 
         void updateData(Person person, Listener<String> listener);
 
-        void saveData(Person person, Listener<ArrayList<Person>> listener);
+        void saveData(DaoSession daoSession, Person person, Listener<ArrayList<Person>> listener);
     }
 }

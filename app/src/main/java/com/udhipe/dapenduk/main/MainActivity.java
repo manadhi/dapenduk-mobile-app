@@ -55,6 +55,11 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     }
 
     @Override
+    public void initializeDaoSession() {
+
+    }
+
+    @Override
     public void endSession() {
 
     }

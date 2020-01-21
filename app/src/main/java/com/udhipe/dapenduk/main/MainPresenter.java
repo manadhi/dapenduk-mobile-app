@@ -1,5 +1,7 @@
 package com.udhipe.dapenduk.main;
 
+import com.udhipe.dapenduk.model.DaoSession;
+
 public class MainPresenter implements MainContract.Presenter {
 
     private MainInteractor mInteractor;
@@ -37,6 +39,16 @@ public class MainPresenter implements MainContract.Presenter {
 
     @Override
     public void exceptionHandler(String message) {
+
+    }
+
+    @Override
+    public void getDaoSession() {
+
+    }
+
+    @Override
+    public void setDaoSession(DaoSession mDaoSession) {
 
     }
 

@@ -23,4 +23,9 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     public void showInfo(boolean state, String message) {
 
     }
+
+    @Override
+    public void initializeDaoSession() {
+
+    }
 }
