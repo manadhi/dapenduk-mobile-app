@@ -2,13 +2,15 @@ package com.udhipe.dapenduk;
 
 public interface BaseContract {
     interface BaseView {
-        void goToPage();
+        void openPage();
 
         void showInfo(boolean state);
     }
 
     interface BasePresenter {
         void getOnePersonData(Long id);
+
+        void goToPage();
     }
 
     interface BaseInteractor {

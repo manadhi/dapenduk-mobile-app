@@ -27,4 +27,9 @@ public class FormPresenter implements FormContract.Presenter {
     public void getOnePersonData(Long id) {
 
     }
+
+    @Override
+    public void goToPage() {
+
+    }
 }

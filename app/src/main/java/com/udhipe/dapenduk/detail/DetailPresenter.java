@@ -5,4 +5,9 @@ public class DetailPresenter implements DetailContract.Presenter {
     public void getOnePersonData(Long id) {
 
     }
+
+    @Override
+    public void goToPage() {
+
+    }
 }

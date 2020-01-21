@@ -5,4 +5,14 @@ public class LoginPresenter implements LoginContract.Presenter {
     public void checkValidAdmin(String username, String password) {
 
     }
+
+    @Override
+    public void getOnePersonData(Long id) {
+
+    }
+
+    @Override
+    public void goToPage() {
+
+    }
 }

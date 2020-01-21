@@ -14,7 +14,7 @@ public interface MainContract {
         void showLoginButton(boolean state);
     }
 
-    interface Presenter {
+    interface Presenter extends BaseContract.BasePresenter {
         void getPersonData(String filter);
 
         void deletePersonData(Long id);

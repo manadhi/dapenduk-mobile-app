@@ -15,7 +15,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     }
 
     @Override
-    public void goToPage() {
+    public void openPage() {
 
     }
 

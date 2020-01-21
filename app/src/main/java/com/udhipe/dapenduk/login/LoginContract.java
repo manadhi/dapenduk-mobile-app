@@ -9,7 +9,7 @@ public interface LoginContract {
 
     }
 
-    interface Presenter {
+    interface Presenter extends BaseContract.BasePresenter {
         void checkValidAdmin(String username, String password);
     }
 
