@@ -46,7 +46,6 @@ public class FormPresenter implements FormContract.Presenter {
         mInteractor.saveData(mDaosession, person, new FormInteractor.Listener<ArrayList<Person>>() {
             @Override
             public void onSuccess(ArrayList<Person> data, String message) {
-                mView.setPersonData(data);
                 mView.showInfo(true, "");
             }
 

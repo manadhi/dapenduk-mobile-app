@@ -16,7 +16,7 @@ public class App extends Application {
         super.onCreate();
 
         // regular SQLite database
-        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "notes-db");
+        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "person-db");
         Database db = helper.getWritableDb();
 
         // encrypted SQLCipher database
