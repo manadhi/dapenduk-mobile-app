@@ -22,9 +22,9 @@ public interface MainContract {
         void checkIsAdmin();
     }
 
-    interface Interactor {
-        void loadData(String filter);
+    interface Interactor extends BaseContract.BaseInteractor {
+        void loadData(String filter, Listener<ArrayList<Person>> listener);
 
-        void deleteData(Long id);
+        void deleteData(Long id, Listener<Boolean> listener);
     }
 }

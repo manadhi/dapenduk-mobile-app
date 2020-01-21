@@ -6,4 +6,13 @@ public interface BaseContract {
 
         void showInfo(boolean state);
     }
+
+    interface BaseInteractor {
+        interface Listener<T> {
+            void onSuccess(T data);
+
+            void onError(String message);
+        }
+
+    }
 }
