@@ -10,4 +10,10 @@ public class DetailPresenter implements DetailContract.Presenter {
     public void goToPage() {
 
     }
+
+    @Override
+    public void exceptionHandler(String message) {
+
+    }
+
 }

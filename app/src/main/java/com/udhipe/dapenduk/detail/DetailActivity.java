@@ -26,7 +26,7 @@ public class DetailActivity extends AppCompatActivity implements DetailContract.
     }
 
     @Override
-    public void showInfo(boolean state) {
+    public void showInfo(boolean state, String message) {
 
     }
 }

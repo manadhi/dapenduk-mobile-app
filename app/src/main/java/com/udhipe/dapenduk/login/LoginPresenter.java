@@ -15,4 +15,10 @@ public class LoginPresenter implements LoginContract.Presenter {
     public void goToPage() {
 
     }
+
+    @Override
+    public void exceptionHandler(String message) {
+
+    }
+
 }

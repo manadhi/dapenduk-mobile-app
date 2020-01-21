@@ -34,4 +34,10 @@ public class MainPresenter implements MainContract.Presenter {
     public void goToPage() {
         mView.openPage();
     }
+
+    @Override
+    public void exceptionHandler(String message) {
+
+    }
+
 }

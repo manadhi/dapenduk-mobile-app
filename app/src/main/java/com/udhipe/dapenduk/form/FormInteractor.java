@@ -2,6 +2,8 @@ package com.udhipe.dapenduk.form;
 
 import com.udhipe.dapenduk.model.Person;
 
+import java.util.ArrayList;
+
 public class FormInteractor implements FormContract.Interactor {
     @Override
     public void loadOneData(Long id, Listener<Person> listener) {
@@ -14,7 +16,7 @@ public class FormInteractor implements FormContract.Interactor {
     }
 
     @Override
-    public void saveData(Person person, Listener<String> listener) {
+    public void saveData(Person person, Listener<ArrayList<Person>> listener) {
 
     }
 }

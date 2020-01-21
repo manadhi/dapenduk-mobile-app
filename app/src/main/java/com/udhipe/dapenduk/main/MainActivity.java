@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     }
 
     @Override
-    public void showInfo(boolean state) {
+    public void showInfo(boolean state, String message) {
 
     }
 

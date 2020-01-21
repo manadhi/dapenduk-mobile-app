@@ -4,13 +4,15 @@ public interface BaseContract {
     interface BaseView {
         void openPage();
 
-        void showInfo(boolean state);
+        void showInfo(boolean state, String message);
     }
 
     interface BasePresenter {
         void getOnePersonData(Long id);
 
         void goToPage();
+
+        void exceptionHandler(String message);
     }
 
     interface BaseInteractor {

@@ -20,7 +20,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     }
 
     @Override
-    public void showInfo(boolean state) {
+    public void showInfo(boolean state, String message) {
 
     }
 }
