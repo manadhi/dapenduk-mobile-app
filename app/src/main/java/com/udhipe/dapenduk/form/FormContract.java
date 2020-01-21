@@ -4,6 +4,7 @@ import com.udhipe.dapenduk.BaseContract;
 import com.udhipe.dapenduk.model.Person;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public interface FormContract {
     interface View extends BaseContract.BaseView {
@@ -26,8 +27,8 @@ public interface FormContract {
 
         void getInputData();
 
-        void savePersonData(String name, String gender, String address, String birthPlace,
-                            String birthDate, String profession);
+        void savePersonData(String name, Person.Gender gender, String address, String birthPlace,
+                            Date birthDate, String profession);
     }
 
     interface Interactor extends BaseContract.BaseInteractor {

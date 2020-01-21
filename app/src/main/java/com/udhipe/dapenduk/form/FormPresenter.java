@@ -3,6 +3,7 @@ package com.udhipe.dapenduk.form;
 import com.udhipe.dapenduk.model.Person;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class FormPresenter implements FormContract.Presenter {
 
@@ -35,8 +36,8 @@ public class FormPresenter implements FormContract.Presenter {
     }
 
     @Override
-    public void savePersonData(String name, String gender, String address, String birthPlace,
-                               String birthDate, String profession) {
+    public void savePersonData(String name, Person.Gender gender, String address, String birthPlace,
+                               Date birthDate, String profession) {
         Long id = null;
         Person person = new Person(id, name, address, birthPlace, birthDate, gender, "", profession);
         mInteractor.saveData(person, new FormInteractor.Listener<ArrayList<Person>>() {

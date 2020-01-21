@@ -1,16 +1,26 @@
 package com.udhipe.dapenduk.model;
 
+import com.udhipe.dapenduk.util.GenderTypeConverter;
+
+import org.greenrobot.greendao.annotation.Convert;
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Index;
 import org.greenrobot.greendao.annotation.NotNull;
 
+import java.util.Date;
+
 @Entity(indexes = {
         @Index(value = "name, id DESC", unique = true)
 })
 
 public class Person {
+
+    public enum Gender {
+        MALE, FEMALE
+    }
+
     @Id(autoincrement = true)
     private Long id;
 
@@ -21,9 +31,11 @@ public class Person {
     @NotNull
     private String birthPlace;
     @NotNull
-    private String birthDate;
+    private Date birthDate;
+
     @NotNull
-    private String gender;
+    @Convert(converter = GenderTypeConverter.class, columnType = String.class)
+    private Gender gender;
 
     private String photoPath;
     private String profession;
@@ -32,9 +44,9 @@ public class Person {
     public Person() {
     }
 
-    @Generated(hash = 181443522)
+    @Generated(hash = 954449568)
     public Person(Long id, @NotNull String name, @NotNull String address, @NotNull String birthPlace,
-            @NotNull String birthDate, @NotNull String gender, String photoPath, String profession) {
+            @NotNull Date birthDate, @NotNull Gender gender, String photoPath, String profession) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -81,20 +93,20 @@ public class Person {
     }
 
     @NotNull
-    public String getBirthDate() {
+    public Date getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(@NotNull String birthDate) {
+    public void setBirthDate(@NotNull Date birthDate) {
         this.birthDate = birthDate;
     }
 
     @NotNull
-    public String getGender() {
+    public Gender getGender() {
         return gender;
     }
 
-    public void setGender(@NotNull String gender) {
+    public void setGender(@NotNull Gender gender) {
         this.gender = gender;
     }
 

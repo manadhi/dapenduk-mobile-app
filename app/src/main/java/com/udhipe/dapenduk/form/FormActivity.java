@@ -12,7 +12,9 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.udhipe.dapenduk.R;
 import com.udhipe.dapenduk.model.Person;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class FormActivity extends AppCompatActivity implements FormContract.View, View.OnClickListener {
 
@@ -26,6 +28,8 @@ public class FormActivity extends AppCompatActivity implements FormContract.View
     private ConstraintLayout mLayoutEditForm;
 
     private FormContract.Presenter mPresenter;
+
+    private SimpleDateFormat mDateFormatter = new SimpleDateFormat("yyyy-MM-dd");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,10 +73,10 @@ public class FormActivity extends AppCompatActivity implements FormContract.View
     public void getInputDataFromUser() {
         try {
             String name = mEdtName.getText().toString();
-            String gender = mEdtGender.getText().toString();
+            Person.Gender gender = Person.Gender.MALE;
             String address = mEdtAddress.getText().toString();
             String birthPlace = mEdtBirthPlace.getText().toString();
-            String birthDate = mEdtBirthDate.getText().toString();
+            Date birthDate = new Date(System.currentTimeMillis());
             String profession = mEdtProfession.getText().toString();
 
             mPresenter.savePersonData(name, gender, address, birthPlace, birthDate, profession);
