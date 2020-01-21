@@ -1,9 +1,5 @@
 package com.udhipe.dapenduk.model;
 
-import androidx.annotation.InspectableProperty;
-import androidx.annotation.Keep;
-import androidx.annotation.Nullable;
-
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
@@ -29,9 +25,7 @@ public class Person {
     @NotNull
     private String gender;
 
-    @Nullable
     private String photoPath;
-    @Nullable
     private String profession;
 
     @Generated(hash = 1024547259)
@@ -104,21 +98,19 @@ public class Person {
         this.gender = gender;
     }
 
-    @Nullable
     public String getPhotoPath() {
         return photoPath;
     }
 
-    public void setPhotoPath(@Nullable String photoPath) {
+    public void setPhotoPath(String photoPath) {
         this.photoPath = photoPath;
     }
 
-    @Nullable
     public String getProfession() {
         return profession;
     }
 
-    public void setProfession(@Nullable String profession) {
+    public void setProfession(String profession) {
         this.profession = profession;
     }
 }
