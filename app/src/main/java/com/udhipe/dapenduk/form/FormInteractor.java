@@ -5,7 +5,7 @@ import com.udhipe.dapenduk.model.Person;
 public class FormInteractor implements FormContract.Interactor {
     @Override
     public void loadOneData(Long id, Listener<Person> listener) {
-        
+
     }
 
     @Override
