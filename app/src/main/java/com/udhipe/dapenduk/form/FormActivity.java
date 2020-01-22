@@ -99,9 +99,9 @@ public class FormActivity extends AppCompatActivity implements FormContract.View
     @Override
     public void showInfo(boolean state, String message) {
         if (state) {
-            Snackbar.make(mLayoutEditForm, getString(R.string.save_success), Snackbar.LENGTH_LONG);
+            Snackbar.make(mLayoutEditForm, getString(R.string.save_success), Snackbar.LENGTH_LONG).show();
         } else {
-            Snackbar.make(mLayoutEditForm, getString(R.string.save_fail), Snackbar.LENGTH_LONG);
+            Snackbar.make(mLayoutEditForm, getString(R.string.save_fail), Snackbar.LENGTH_LONG).show();
         }
     }
 

@@ -1,6 +1,7 @@
 package com.udhipe.dapenduk.main;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -8,18 +9,24 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.udhipe.dapenduk.R;
 import com.udhipe.dapenduk.form.FormActivity;
+import com.udhipe.dapenduk.model.DaoSession;
 import com.udhipe.dapenduk.model.Person;
+import com.udhipe.dapenduk.util.App;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements MainContract.View, View.OnClickListener {
 
     private RecyclerView mRecyclerData;
     private FloatingActionButton mFabAddData;
+    private ConstraintLayout mLayoutMain;
 
     private MainPresenter mPresenter;
+
+    private DaoSession mDaoSession;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,14 +39,16 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     private void initializeUi() {
         mRecyclerData = findViewById(R.id.recycler_data);
         mFabAddData = findViewById(R.id.fab_add_data);
+        mLayoutMain = findViewById(R.id.layout_main);
 
         mPresenter = new MainPresenter(this);
+        mPresenter.getDaoSession();
 
         mFabAddData.setOnClickListener(this);
     }
 
     @Override
-    public void showItem(ArrayList<Person> item) {
+    public void showItem(List<Person> item) {
 
     }
 
@@ -51,12 +60,15 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
 
     @Override
     public void showInfo(boolean state, String message) {
-
+        Snackbar.make(mLayoutMain, message, Snackbar.LENGTH_LONG).show();
     }
 
     @Override
     public void initializeDaoSession() {
+        mDaoSession = ((App) getApplication()).getDaoSession();
+        mPresenter.setDaoSession(mDaoSession);
 
+        mPresenter.getPersonData("");
     }
 
     @Override
@@ -76,5 +88,12 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
                 mPresenter.goToPage();
                 break;
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        mPresenter.getPersonData("");
     }
 }

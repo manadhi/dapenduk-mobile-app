@@ -1,13 +1,15 @@
 package com.udhipe.dapenduk.main;
 
 import com.udhipe.dapenduk.BaseContract;
+import com.udhipe.dapenduk.model.DaoSession;
 import com.udhipe.dapenduk.model.Person;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public interface MainContract {
     interface View extends BaseContract.BaseView {
-        void showItem(ArrayList<Person> item);
+        void showItem(List<Person> item);
 
         void endSession();
 
@@ -23,8 +25,8 @@ public interface MainContract {
     }
 
     interface Interactor extends BaseContract.BaseInteractor {
-        void loadData(String filter, Listener<ArrayList<Person>> listener);
+        void loadData(DaoSession daoSession, String filter, Listener<List<Person>> listener);
 
-        void deleteData(Long id, Listener<Boolean> listener);
+        void deleteData(DaoSession daoSession, Long id, Listener<Boolean> listener);
     }
 }

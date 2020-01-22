@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 public class FormInteractor implements FormContract.Interactor {
 
-    private PersonDao mPersonDao;
     public static final String SUCCESS = "success";
 
     @Override
@@ -24,7 +23,7 @@ public class FormInteractor implements FormContract.Interactor {
     @Override
     public void saveData(DaoSession daoSession, Person person, Listener<ArrayList<Person>> listener) {
         try {
-            mPersonDao = daoSession.getPersonDao();
+            PersonDao mPersonDao = daoSession.getPersonDao();
             mPersonDao.insert(person);
             listener.onSuccess(new ArrayList<Person>(), SUCCESS);
         } catch (Exception exception) {
