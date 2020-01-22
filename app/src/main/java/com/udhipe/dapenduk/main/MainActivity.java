@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
 
     @Override
     public void openPage(String page) {
-        Intent intent;
+        Intent intent = new Intent();
         if ("Edit".equalsIgnoreCase(page)) {
             intent = new Intent(this, FormActivity.class);
         } else {
