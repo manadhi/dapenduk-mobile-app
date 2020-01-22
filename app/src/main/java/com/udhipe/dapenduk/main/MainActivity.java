@@ -97,6 +97,8 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     public void openPage(String page) {
         Intent intent = new Intent();
         if ("Edit".equalsIgnoreCase(page)) {
+//            intent = new Intent(this, FormActivity.class);
+        } else if ("Add".equalsIgnoreCase(page)) {
             intent = new Intent(this, FormActivity.class);
         } else {
             intent = new Intent(this, DetailActivity.class);
@@ -135,7 +137,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.fab_add_data:
-                mPresenter.goToPage("FormActivity");
+                mPresenter.goToPage("Add");
                 break;
         }
     }
