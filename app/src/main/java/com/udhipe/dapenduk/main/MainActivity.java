@@ -11,6 +11,9 @@ import android.view.View;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.udhipe.dapenduk.R;
+import com.udhipe.dapenduk.adapter.PersonAdapter;
+import com.udhipe.dapenduk.adapter.PersonAdapterContract;
+import com.udhipe.dapenduk.adapter.PersonAdapterPresenter;
 import com.udhipe.dapenduk.form.FormActivity;
 import com.udhipe.dapenduk.model.DaoSession;
 import com.udhipe.dapenduk.model.Person;
@@ -25,6 +28,9 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     private ConstraintLayout mLayoutMain;
 
     private MainPresenter mPresenter;
+    private PersonAdapterPresenter mAdapterPresenter;
+
+    private PersonAdapter mAdapter;
 
     private DaoSession mDaoSession;
 
@@ -44,12 +50,15 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         mPresenter = new MainPresenter(this);
         mPresenter.getDaoSession();
 
+        mAdapterPresenter = new PersonAdapterPresenter();
+        mAdapter = new PersonAdapter(mAdapterPresenter);
+
         mFabAddData.setOnClickListener(this);
     }
 
     @Override
     public void showItem(List<Person> item) {
-
+        mAdapterPresenter.setListPerson(item);
     }
 
     @Override
