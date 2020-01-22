@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         mAdapter.setOnItemClickCallback(new PersonAdapter.OnItemClickCallback() {
             @Override
             public void onItemClicked(int position) {
-
+                mPresenter.goToPage("Detail");
             }
 
             @Override
@@ -97,9 +97,9 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     public void openPage(String page) {
         Intent intent;
         if ("Edit".equalsIgnoreCase(page)) {
-            intent = new Intent(this, DetailActivity.class);
-        } else {
             intent = new Intent(this, FormActivity.class);
+        } else {
+            intent = new Intent(this, DetailActivity.class);
         }
         startActivity(intent);
     }

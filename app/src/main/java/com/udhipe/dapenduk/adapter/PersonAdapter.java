@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -72,7 +73,7 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.PersonView
 
     public class PersonViewHolder extends RecyclerView.ViewHolder implements PersonAdapterContract.View.Holder {
 
-        private LinearLayout mItemPerson;
+        private RelativeLayout mItemPerson;
         private TextView mTextView;
         private MaterialButton mButtonEdit;
         private MaterialButton mButtonDelete;
