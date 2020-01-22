@@ -2,6 +2,7 @@ package com.udhipe.dapenduk.main;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -46,13 +47,8 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         mFabAddData = findViewById(R.id.fab_add_data);
         mLayoutMain = findViewById(R.id.layout_main);
 
-        mAdapterPresenter = new PersonAdapterPresenter();
-        mAdapter = new PersonAdapter(mAdapterPresenter);
-
-        mAdapterPresenter.setAdapter(mAdapter);
-
         mPresenter = new MainPresenter(this);
-        mPresenter.getDaoSession();
+        mPresenter.configViewForItem();
 
         mFabAddData.setOnClickListener(this);
     }
@@ -60,6 +56,22 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     @Override
     public void showItem(List<Person> item) {
         mAdapterPresenter.setListPerson(item);
+    }
+
+    @Override
+    public void setupRecyclerView() {
+
+        mRecyclerData.setHasFixedSize(true);
+        mRecyclerData.setLayoutManager(new LinearLayoutManager(this));
+
+        mAdapterPresenter = new PersonAdapterPresenter();
+        mAdapter = new PersonAdapter(mAdapterPresenter);
+
+        mAdapterPresenter.setAdapter(mAdapter);
+
+        mRecyclerData.setAdapter(mAdapter);
+
+        mPresenter.getDaoSession();
     }
 
     @Override
@@ -76,9 +88,8 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     @Override
     public void initializeDaoSession() {
         mDaoSession = ((App) getApplication()).getDaoSession();
-        mPresenter.setDaoSession(mDaoSession);
-
-        mPresenter.getPersonData("");
+        mPresenter.getPersonData(mDaoSession, "");
+//        mPresenter.setDaoSession(mDaoSession);
     }
 
     @Override
@@ -89,6 +100,11 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     @Override
     public void showLoginButton(boolean state) {
 
+    }
+
+    @Override
+    public void setDaoSessionDone() {
+//        mPresenter.getPersonData(mDaoSession, "");
     }
 
     @Override
@@ -104,7 +120,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     protected void onResume() {
         super.onResume();
         if (mPresenter != null) {
-            mPresenter.getPersonData("");
+//            mPresenter.getPersonData("");
         }
     }
 }

@@ -4,20 +4,25 @@ import com.udhipe.dapenduk.BaseContract;
 import com.udhipe.dapenduk.model.DaoSession;
 import com.udhipe.dapenduk.model.Person;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public interface MainContract {
     interface View extends BaseContract.BaseView {
         void showItem(List<Person> item);
 
+        void setupRecyclerView();
+
         void endSession();
 
         void showLoginButton(boolean state);
+
+        void setDaoSessionDone();
     }
 
     interface Presenter extends BaseContract.BasePresenter {
-        void getPersonData(String filter);
+        void getPersonData(DaoSession daoSession, String filter);
+
+        void configViewForItem();
 
         void deletePersonData(Long id);
 

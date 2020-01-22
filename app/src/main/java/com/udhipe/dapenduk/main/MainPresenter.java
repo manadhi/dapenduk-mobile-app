@@ -17,8 +17,8 @@ public class MainPresenter implements MainContract.Presenter {
     }
 
     @Override
-    public void getPersonData(String filter) {
-        mInteractor.loadData(mDaosession, filter, new MainInteractor.Listener<List<Person>>() {
+    public void getPersonData(DaoSession daoSession, String filter) {
+        mInteractor.loadData(daoSession, filter, new MainInteractor.Listener<List<Person>>() {
             @Override
             public void onSuccess(List<Person> data, String message) {
                 mView.showItem(data);
@@ -30,6 +30,11 @@ public class MainPresenter implements MainContract.Presenter {
                 mView.showInfo(false, message);
             }
         });
+    }
+
+    @Override
+    public void configViewForItem() {
+        mView.setupRecyclerView();
     }
 
     @Override
@@ -65,6 +70,7 @@ public class MainPresenter implements MainContract.Presenter {
     @Override
     public void setDaoSession(DaoSession mDaoSession) {
         this.mDaosession = mDaoSession;
+        mView.setDaoSessionDone();
     }
 
 }
