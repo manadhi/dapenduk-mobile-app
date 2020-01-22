@@ -9,7 +9,7 @@ public class DetailPresenter implements DetailContract.Presenter {
     }
 
     @Override
-    public void goToPage() {
+    public void goToPage(String page) {
 
     }
 

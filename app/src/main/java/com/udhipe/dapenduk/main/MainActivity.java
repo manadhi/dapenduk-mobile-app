@@ -14,7 +14,9 @@ import com.google.android.material.snackbar.Snackbar;
 import com.udhipe.dapenduk.R;
 import com.udhipe.dapenduk.adapter.PersonAdapter;
 import com.udhipe.dapenduk.adapter.PersonAdapterPresenter;
+import com.udhipe.dapenduk.detail.DetailActivity;
 import com.udhipe.dapenduk.form.FormActivity;
+import com.udhipe.dapenduk.form.FormContract;
 import com.udhipe.dapenduk.model.DaoSession;
 import com.udhipe.dapenduk.model.Person;
 import com.udhipe.dapenduk.util.App;
@@ -72,11 +74,33 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         mRecyclerData.setAdapter(mAdapter);
 
         mPresenter.getDaoSession();
+
+        mAdapter.setOnItemClickCallback(new PersonAdapter.OnItemClickCallback() {
+            @Override
+            public void onItemClicked(int position) {
+
+            }
+
+            @Override
+            public void onDeleteClicked(int position) {
+                mPresenter.deletePersonData(mDaoSession, position);
+            }
+
+            @Override
+            public void onEditClicked(int position) {
+
+            }
+        });
     }
 
     @Override
-    public void openPage() {
-        Intent intent = new Intent(this, FormActivity.class);
+    public void openPage(String page) {
+        Intent intent;
+        if ("Edit".equalsIgnoreCase(page)) {
+            intent = new Intent(this, DetailActivity.class);
+        } else {
+            intent = new Intent(this, FormActivity.class);
+        }
         startActivity(intent);
     }
 
@@ -89,7 +113,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     public void initializeDaoSession() {
         mDaoSession = ((App) getApplication()).getDaoSession();
         mPresenter.getPersonData(mDaoSession, "");
-//        mPresenter.setDaoSession(mDaoSession);
+        mPresenter.setDaoSession(mDaoSession);
     }
 
     @Override
@@ -103,15 +127,15 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     }
 
     @Override
-    public void setDaoSessionDone() {
-//        mPresenter.getPersonData(mDaoSession, "");
+    public void reloadView() {
+        mPresenter.getPersonData(mDaoSession, "");
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.fab_add_data:
-                mPresenter.goToPage();
+                mPresenter.goToPage("FormActivity");
                 break;
         }
     }
@@ -119,8 +143,8 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     @Override
     protected void onResume() {
         super.onResume();
-        if (mPresenter != null) {
-//            mPresenter.getPersonData("");
+        if ((mPresenter != null) && (mDaoSession != null)) {
+            mPresenter.getPersonData(mDaoSession, "");
         }
     }
 }

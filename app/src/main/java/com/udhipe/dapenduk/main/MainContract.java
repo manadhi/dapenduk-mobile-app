@@ -16,7 +16,7 @@ public interface MainContract {
 
         void showLoginButton(boolean state);
 
-        void setDaoSessionDone();
+        void reloadView();
     }
 
     interface Presenter extends BaseContract.BasePresenter {
@@ -24,7 +24,7 @@ public interface MainContract {
 
         void configViewForItem();
 
-        void deletePersonData(Long id);
+        void deletePersonData(DaoSession daoSession, int position);
 
         void checkIsAdmin();
     }

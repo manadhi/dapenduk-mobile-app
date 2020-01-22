@@ -92,7 +92,7 @@ public class FormActivity extends AppCompatActivity implements FormContract.View
     }
 
     @Override
-    public void openPage() {
+    public void openPage(String page) {
 
     }
 

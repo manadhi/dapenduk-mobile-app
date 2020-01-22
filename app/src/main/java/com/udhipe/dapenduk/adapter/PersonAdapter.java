@@ -13,11 +13,15 @@ import com.google.android.material.button.MaterialButton;
 import com.udhipe.dapenduk.R;
 import com.udhipe.dapenduk.model.Person;
 
-public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.PersonViewHolder> implements PersonAdapterContract.View{
+public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.PersonViewHolder> implements PersonAdapterContract.View {
 
     private OnItemClickCallback onItemClickCallback;
 
     private PersonAdapterPresenter mPresenter;
+
+    public void setOnItemClickCallback(OnItemClickCallback onItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback;
+    }
 
     public PersonAdapter(PersonAdapterPresenter mPresenter) {
         this.mPresenter = mPresenter;
@@ -31,30 +35,27 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.PersonView
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final PersonViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final PersonViewHolder holder, final int position) {
         mPresenter.getPerson(position, holder);
-
-
-//        Person person = personData.get(position);
-//        holder.mTextView.setText(person.getName());
 
         holder.mButtonEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                onItemClickCallback.onItemClicked(personData.get(holder.getAdapterPosition()));
+                onItemClickCallback.onEditClicked(position);
             }
         });
 
         holder.mButtonDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                onItemClickCallback.onDeleteClicked(position);
             }
         });
 
         holder.mItemPerson.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                onItemClickCallback.onItemClicked(position);
             }
         });
     }
@@ -98,6 +99,10 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.PersonView
     }
 
     public interface OnItemClickCallback {
-        void onItemClicked(Person data);
+        void onItemClicked(int position);
+
+        void onDeleteClicked(int position);
+
+        void onEditClicked(int position);
     }
 }

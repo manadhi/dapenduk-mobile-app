@@ -14,6 +14,7 @@ public interface PersonAdapterContract {
             void setTitle(String name);
 
             void setAddress(String address);
+
         }
 
     }

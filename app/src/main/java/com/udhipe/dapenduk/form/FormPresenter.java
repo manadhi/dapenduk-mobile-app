@@ -62,7 +62,7 @@ public class FormPresenter implements FormContract.Presenter {
     }
 
     @Override
-    public void goToPage() {
+    public void goToPage(String page) {
 
     }
 

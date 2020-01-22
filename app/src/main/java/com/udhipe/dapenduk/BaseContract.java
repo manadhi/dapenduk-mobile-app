@@ -4,7 +4,7 @@ import com.udhipe.dapenduk.model.DaoSession;
 
 public interface BaseContract {
     interface BaseView {
-        void openPage();
+        void openPage(String page);
 
         void showInfo(boolean state, String message);
 
@@ -14,7 +14,7 @@ public interface BaseContract {
     interface BasePresenter {
         void getOnePersonData(Long id);
 
-        void goToPage();
+        void goToPage(String page);
 
         void exceptionHandler(String message);
 

@@ -21,7 +21,7 @@ public class DetailActivity extends AppCompatActivity implements DetailContract.
     }
 
     @Override
-    public void openPage() {
+    public void openPage(String page) {
 
     }
 

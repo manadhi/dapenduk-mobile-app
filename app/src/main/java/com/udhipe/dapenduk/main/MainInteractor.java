@@ -24,6 +24,12 @@ public class MainInteractor implements MainContract.Interactor {
 
     @Override
     public void deleteData(DaoSession daoSession, Long id, Listener<Boolean> listener) {
-
+        try {
+            PersonDao mPersonDao = daoSession.getPersonDao();
+            mPersonDao.deleteByKey(id);
+            listener.onSuccess(true, "success");
+        } catch (Exception exception) {
+            listener.onError(exception.getMessage());
+        }
     }
 }

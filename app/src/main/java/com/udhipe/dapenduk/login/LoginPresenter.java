@@ -14,7 +14,7 @@ public class LoginPresenter implements LoginContract.Presenter {
     }
 
     @Override
-    public void goToPage() {
+    public void goToPage(String page) {
 
     }
 
