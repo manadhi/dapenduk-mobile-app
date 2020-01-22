@@ -12,7 +12,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.udhipe.dapenduk.R;
 import com.udhipe.dapenduk.adapter.PersonAdapter;
-import com.udhipe.dapenduk.adapter.PersonAdapterContract;
 import com.udhipe.dapenduk.adapter.PersonAdapterPresenter;
 import com.udhipe.dapenduk.form.FormActivity;
 import com.udhipe.dapenduk.model.DaoSession;
@@ -47,11 +46,13 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         mFabAddData = findViewById(R.id.fab_add_data);
         mLayoutMain = findViewById(R.id.layout_main);
 
-        mPresenter = new MainPresenter(this);
-        mPresenter.getDaoSession();
-
         mAdapterPresenter = new PersonAdapterPresenter();
         mAdapter = new PersonAdapter(mAdapterPresenter);
+
+        mAdapterPresenter.setAdapter(mAdapter);
+
+        mPresenter = new MainPresenter(this);
+        mPresenter.getDaoSession();
 
         mFabAddData.setOnClickListener(this);
     }
@@ -102,7 +103,8 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     @Override
     protected void onResume() {
         super.onResume();
-
-        mPresenter.getPersonData("");
+        if (mPresenter != null) {
+            mPresenter.getPersonData("");
+        }
     }
 }

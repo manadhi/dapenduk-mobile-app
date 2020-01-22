@@ -13,7 +13,7 @@ import com.google.android.material.button.MaterialButton;
 import com.udhipe.dapenduk.R;
 import com.udhipe.dapenduk.model.Person;
 
-public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.PersonViewHolder> {
+public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.PersonViewHolder> implements PersonAdapterContract.View{
 
     private OnItemClickCallback onItemClickCallback;
 
@@ -64,7 +64,12 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.PersonView
         return mPresenter.countListPersonSize();
     }
 
-    public class PersonViewHolder extends RecyclerView.ViewHolder implements PersonAdapterContract.View {
+    @Override
+    public void refreshDataView() {
+        notifyDataSetChanged();
+    }
+
+    public class PersonViewHolder extends RecyclerView.ViewHolder implements PersonAdapterContract.View.Holder {
 
         private LinearLayout mItemPerson;
         private TextView mTextView;
@@ -82,8 +87,8 @@ public class PersonAdapter extends RecyclerView.Adapter<PersonAdapter.PersonView
         }
 
         @Override
-        public void setTitle(String title) {
-
+        public void setTitle(String name) {
+            mTextView.setText(name);
         }
 
         @Override

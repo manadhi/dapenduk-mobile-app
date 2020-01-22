@@ -6,17 +6,26 @@ import java.util.List;
 
 public interface PersonAdapterContract {
     interface View {
-        void setTitle(String title);
 
-        void setAddress(String address);
+        void refreshDataView();
+
+        interface Holder {
+
+            void setTitle(String name);
+
+            void setAddress(String address);
+        }
+
     }
 
     interface Presenter {
-        void getPerson(int position, PersonAdapterContract.View rowView);
+        void getPerson(int position, PersonAdapterContract.View.Holder rowView);
 
         void setListPerson(List<Person> listPerson);
 
         int countListPersonSize();
+
+        void setAdapter(PersonAdapter personAdapter);
     }
 
     interface Model {
